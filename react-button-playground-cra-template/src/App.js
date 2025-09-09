@@ -126,7 +126,7 @@ const CallBug_Broken = () => {
   const handleClick = () => alert("Runs on render — wrong!");
   return (
     <button
-      onClick={handleClick()}
+      onClick={handleClick} // Pass function reference, not call
       className="px-3 py-2 rounded-lg bg-zinc-900 text-white"
     >
       Click Me
