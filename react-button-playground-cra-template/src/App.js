@@ -89,6 +89,7 @@ const RefreshBug_Broken = () => {
   return (
     <form className="flex items-center gap-2">
       <button
+        type="button"
         onClick={() => {
           alert("Clicked, but form is submitting because type is missing!");
           setCount((c) => c + 1);
@@ -149,9 +150,9 @@ const CallBug_Fixed = () => {
 // 3. <a> vs <Link>
 const AnchorBug_Broken = () => (
   <div className="flex items-center gap-3">
-    <a href="/about" className="underline text-blue-600">
+    <Link to="/about" className="underline text-blue-600">
       Go to About (anchor)
-    </a>
+    </Link>
     <RouterHUD />
   </div>
 );
@@ -172,7 +173,7 @@ const NavigateTypo_Broken = () => {
     <div className="flex items-center gap-3">
       <button
         className="px-3 py-2 rounded-lg bg-zinc-900 text-white"
-        onClick={() => nav("/abot")} // typo
+        onClick={() => nav("/about")} // typo
       >
         Go to About (typo)
       </button>
@@ -203,7 +204,7 @@ const PreventDefault_Broken = () => {
     <form className="flex items-center gap-2">
       <button
         className="px-3 py-2 rounded-lg bg-zinc-900 text-white"
-        onClick={() => setMsg("Clicked (but form may submit/refresh)")}
+        onClick={(e) => { e.preventDefault(); setMsg("Handled click without submitting"); }}
       >
         Click
       </button>
